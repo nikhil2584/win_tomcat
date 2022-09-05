@@ -19,7 +19,7 @@ RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tl
         -OutFile "/usr/share/tomacat/index.html"
 
 # https://github.com/caddyserver/caddy/releases
-ENV TOMCAT_VERSION v9.5.2
+ENV TOMCAT_VERSION v9.0.65
 
 RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; \
     Invoke-WebRequest \
