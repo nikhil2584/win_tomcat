@@ -3,7 +3,7 @@
 
 FROM mcr.microsoft.com/windows/servercore:1809
 
-#SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # Apparently Windows Server 2016 disables TLS 1.2 by default - this enables it so we can talk to GitHub
 RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; \
@@ -33,11 +33,11 @@ RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tl
 ENV XDG_CONFIG_HOME c:/config
 ENV XDG_DATA_HOME c:/data
 
-#LABEL org.opencontainers.image.description="a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go"
-#Image.documentation=https://caddyserver.com/docs
-#LABEL org.opencontainers.image.vendor="Light Code Labs"
-#LABEL org.opencontainers.image.licenses=Apache-2.0
-#LABEL org.opencontainers.image.source="https://github.com/caddyserver/caddy-docker"
+LABEL org.opencontainers.image.description="a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go"#
+#image.documentation=https://caddyserver.com/docs
+LABEL org.opencontainers.image.vendor="Light Code Labs"
+LABEL org.opencontainers.image.licenses=Apache-2.0
+LABEL org.opencontainers.image.source="https://github.com/caddyserver/caddy-docker"
 
 EXPOSE 8081
 EXPOSE 443
