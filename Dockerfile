@@ -3,7 +3,7 @@
 
 FROM mcr.microsoft.com/windows/servercore:1809
 
-SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+#SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # Apparently Windows Server 2016 disables TLS 1.2 by default - this enables it so we can talk to GitHub
 RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; \
