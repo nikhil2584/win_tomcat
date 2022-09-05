@@ -12,11 +12,11 @@ RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tl
     mkdir /etc/tomcat; \
     mkdir /usr/share/tomcat; \
   #  Invoke-WebRequest \
-        -Uri "https://github.com/caddyserver/dist/raw/979e498d6d01e1fe7c22db848a3e3bc65369183f/config/Caddyfile" \
-        -OutFile "/etc/tomcat/tomcatfile"; \
+  #      -Uri "https://github.com/caddyserver/dist/raw/979e498d6d01e1fe7c22db848a3e3bc65369183f/config/Caddyfile" \
+   #     -OutFile "/etc/tomcat/tomcatfile"; \
    # Invoke-WebRequest \
-        -Uri "https://github.com/caddyserver/dist/raw/979e498d6d01e1fe7c22db848a3e3bc65369183f/welcome/index.html" \
-        -OutFile "/usr/share/tomacat/index.html"
+        #-Uri "https://github.com/caddyserver/dist/raw/979e498d6d01e1fe7c22db848a3e3bc65369183f/welcome/index.html" \
+       # -OutFile "/usr/share/tomacat/index.html"
 
 # https://github.com/caddyserver/caddy/releases
 ENV TOMCAT_VERSION v9.0.65
