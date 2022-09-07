@@ -25,7 +25,7 @@ RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tl
     Invoke-WebRequest \
         -Uri "https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.65/bin/apache-tomcat-9.0.65-windows-x64.zip" \
         -OutFile "/tomcat.zip"; \
-    if (!(Get-FileHash -Path /caddy.zip -Algorithm SHA512).Hash.ToLower().Equals('b104d364a458f457bab24f12f97470612035f705fceb170ce16b567e18e0429a18a726f6b1bb435f92d28a659aee52c08c0bac3be41b7f23887b8e7307507482')) { exit 1; }; \
+    if (!(Get-FileHash -Path /tomcat.zip -Algorithm SHA512).Hash.ToLower().Equals('b104d364a458f457bab24f12f97470612035f705fceb170ce16b567e18e0429a18a726f6b1bb435f92d28a659aee52c08c0bac3be41b7f23887b8e7307507482')) { exit 1; }; \
     Expand-Archive -Path "/tomcat.zip" -DestinationPath "/" -Force; \
     Remove-Item "/tomcat.zip" -Force
 
@@ -33,11 +33,11 @@ RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tl
 ENV XDG_CONFIG_HOME c:/config
 ENV XDG_DATA_HOME c:/data
 
-LABEL org.opencontainers.image.description="a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go"#
+#LABEL org.opencontainers.image.description="a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go"#
 #image.documentation=https://caddyserver.com/docs
-LABEL org.opencontainers.image.vendor="Light Code Labs"
-LABEL org.opencontainers.image.licenses=Apache-2.0
-LABEL org.opencontainers.image.source="https://github.com/caddyserver/caddy-docker"
+#LABEL org.opencontainers.image.vendor="Light Code Labs"
+#LABEL org.opencontainers.image.licenses=Apache-2.0
+#LABEL org.opencontainers.image.source="https://github.com/caddyserver/caddy-docker"
 
 EXPOSE 8081
 EXPOSE 443
@@ -46,4 +46,4 @@ EXPOSE 2019
 # Make sure it runs and reports its version
 RUN ["catalina", "version"]
 
-CMD ["tomcat", "run", "--config", "/etc/caddy/tomcatfile", "--adapter", "tomcatfile"]
+CMD ["tomcat", "run", "--config", "/etc/tomcat/tomcatfile", "--adapter", "tomcatfile"]
